@@ -144,10 +144,10 @@ target_stock = (
     + safety_stock
 )
 
-order_quantity = max(
-    0,
-    target_stock - current_inventory
-)
+if current_inventory <= reorder_point:
+    order_quantity = max(0, target_stock - current_inventory)
+else:
+    order_quantity = 0
 
 # -----------------------
 # Results
